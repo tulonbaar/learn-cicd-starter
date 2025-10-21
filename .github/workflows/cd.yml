@@ -19,6 +19,11 @@ jobs:
         with:
           go-version: "1.25.1"
 
+      - name: Set up Goose
+        uses: mscno/setup-goose@v1
+        with:
+          version: "v3.26.0"
+
       - name: buildprod.sh
         run: ./scripts/buildprod.sh
 
@@ -36,8 +41,8 @@ jobs:
       - name: 'gcloud builds submit'
         run: gcloud builds submit --tag europe-central2-docker.pkg.dev/heroic-icon-475820-e0/notely-ar-repo/notely:latest .
 
-      - name: Deploy to Cloud Run
-        run: gcloud run deploy notely --image europe-central2-docker.pkg.dev/heroic-icon-475820-e0/notely-ar-repo/notely:latest --region europe-central2 --allow-unauthenticated --project heroic-icon-475820-e0 --max-instances=4
-
       - name: migrateup.sh
         run: ./scripts/migrateup.sh
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image europe-central2-docker.pkg.dev/heroic-icon-475820-e0/notely-ar-repo/notely:latest --region europe-central2 --allow-unauthenticated --project heroic-icon-475820-e0 --max-instances=4
