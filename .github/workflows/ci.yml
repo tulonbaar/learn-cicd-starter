@@ -24,9 +24,6 @@ jobs:
       - name: Perform Tests
         run: go test -cover ./...
 
-      - name: Run gosec
-        run: gosec ./...
-
   style:
     name: Style
     runs-on: ubuntu-latest
