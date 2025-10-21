@@ -33,3 +33,6 @@ jobs:
 
       - name: 'gcloud builds submit'
         run: gcloud builds submit --tag europe-central2-docker.pkg.dev/heroic-icon-475820-e0/notely-ar-repo/notely:latest .
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image europe-central2-docker.pkg.dev/heroic-icon-475820-e0/notely-ar-repo/notely:latest --region europe-central2 --allow-unauthenticated --project heroic-icon-475820-e0 --max-instances=4
