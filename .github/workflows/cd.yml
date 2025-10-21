@@ -30,3 +30,6 @@ jobs:
 
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
+
+      - name: 'gcloud builds submit'
+        run: gcloud builds submit --tag europe-central2-docker.pkg.dev/heroic-icon-475820-e0/notely-ar-repo/notely:latest .
